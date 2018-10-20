@@ -1,8 +1,9 @@
+import 'package:escape_earth/route/home.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(App());
 
-final _splashDuration = Duration(milliseconds: 1500);
+final _splashDuration = Duration(milliseconds: 1400);
 
 class App extends StatefulWidget {
   @override
@@ -15,8 +16,14 @@ class AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    currentView = Splash(duration: _splashDuration);
+    currentView = Splash(duration: _splashDuration, callback: () {
+      setState(() {
+        currentView = Home();
+      });
+    },);
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +34,16 @@ class AppState extends State<App> {
   }
 }
 
+typedef void SplashCallback();
+
 class Splash extends StatefulWidget {
   final Duration duration;
+  final SplashCallback callback;
 
   Splash({
     Key key,
     @required this.duration,
+    @required this.callback,
   }) : super(key: key);
 
   @override
@@ -51,7 +62,21 @@ class SplashState extends State<Splash> with SingleTickerProviderStateMixin {
         CurvedAnimation(parent: controller, curve: Curves.elasticIn);
     rocketAnimation = IntTween(begin: 0, end: 360).animate(curve);
     controller.forward();
+    controller.addStatusListener((status) async {
+      if (status == AnimationStatus.completed) {
+        // Wait after the animation
+        await Future.delayed(Duration(milliseconds: 600));
+        widget.callback();
+      }
+    });
   }
+
+  @override
+    void dispose() {
+      // TODO: implement dispose
+      controller.dispose();
+      super.dispose();
+    }
 
   @override
   Widget build(BuildContext context) {
