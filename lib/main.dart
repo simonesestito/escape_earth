@@ -1,5 +1,6 @@
 import 'package:escape_earth/route/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(App());
 
@@ -16,18 +17,30 @@ class AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    currentView = Splash(duration: _splashDuration, callback: () {
-      setState(() {
-        currentView = Home();
-      });
-    },);
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Color.fromARGB(0xFF, 0x09, 0x10, 0x2a),
+        systemNavigationBarColor: Color.fromARGB(0xFF, 0x13, 0x1C, 0x31),
+      ),
+    );
+
+    currentView = Splash(
+      duration: _splashDuration,
+      callback: () {
+        setState(() {
+          currentView = Home();
+        });
+      },
+    );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark().copyWith(
+        backgroundColor: Color.fromARGB(0xFF, 0x13, 0x1C, 0x31),
+        scaffoldBackgroundColor: Color.fromARGB(0xFF, 0x09, 0x10, 0x2a),
+      ),
       title: "Escape Earth",
       home: currentView,
     );
@@ -72,16 +85,15 @@ class SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   }
 
   @override
-    void dispose() {
-      // TODO: implement dispose
-      controller.dispose();
-      super.dispose();
-    }
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(
           child: Container(
         width: 250.0,

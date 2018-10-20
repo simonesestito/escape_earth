@@ -20,11 +20,8 @@ class BottomHome extends StatelessWidget {
       height: BOTTOM_BAR_HEIGHT,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
-          border: Border.all(
-        color: Colors.black12,
-        width: 1.0,
-      )),
+        color: Theme.of(context).backgroundColor,
+      ),
       child: Row(
         children: getNavButtons(),
       ),
@@ -36,7 +33,10 @@ class BottomHome extends StatelessWidget {
     for (int i = 0; i < buttons.length; i++) {
       result.add(Expanded(
         child: GestureDetector(
-          child: buttons[i],
+          child: Container(
+            height: i == 1 ? double.infinity : 40.0,
+            child: buttons[i],
+          ),
           onTap: () => this.clickListener(i),
         ),
       ));
