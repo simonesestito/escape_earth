@@ -11,6 +11,9 @@ class RocketView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final launchIconHeight = 28.0;
+    final launchTextSize = 17.0;
+
     return Theme(
       data: Theme.of(context).copyWith(
         textTheme: TextTheme(
@@ -22,11 +25,33 @@ class RocketView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(launch.name, style: TextStyle(fontWeight: FontWeight.bold)),
-              Text(launch.launchCompany.toString()),
-              Text(launch.date),
+              Padding(
+                padding: EdgeInsets.only(bottom: 8.0),
+                child: Text(
+                  launch.name,
+                  style: Theme.of(context).textTheme.title.copyWith(
+                        color: Colors.black,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Row(children: <Widget>[
+                Icon(Icons.flag, color: Colors.black, size: launchIconHeight),
+                Text(launch.launchCompany.countryCode,
+              
+                    style: TextStyle(color: Colors.black, fontSize: launchTextSize)),
+              ]),
+              Row(children: <Widget>[
+                Image.asset("assets/img/ic_rocket_launch.png", width: launchIconHeight),
+                Text(launch.launchCompany.name,
+                    style: TextStyle(color: Colors.black, fontSize: launchTextSize)),
+              ]),
+              Row(children: <Widget>[
+                Icon(Icons.alarm, color: Colors.black, size: launchIconHeight,),
+                Text(launch.date, style: TextStyle(color: Colors.black, fontSize: launchTextSize)),
+              ]),
             ],
           ),
         ),
