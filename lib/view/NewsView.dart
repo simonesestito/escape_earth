@@ -6,12 +6,10 @@ import 'package:escape_earth/localdata.dart';
 class NewsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ListView.builder(
-          itemCount: latestNews.length,
-          padding: EdgeInsets.only(left: 16.0, right: 16.0),
-          itemBuilder: (context, i) => NewsItem(news: latestNews[i])),
-    );
+    return ListView.builder(
+        itemCount: latestNews.length,
+        padding: EdgeInsets.only(left: 16.0, right: 16.0),
+        itemBuilder: (context, i) => NewsItem(news: latestNews[i]));
   }
 }
 
@@ -72,7 +70,8 @@ class NewsItem extends StatelessWidget {
                   children: <Widget>[
                     Icon(Icons.calendar_today, color: Colors.black),
                     Padding(padding: EdgeInsets.all(2.5)),
-                    Text(_dateToCalendarString(news.date), style: TextStyle(color: Colors.black)),
+                    Text(_dateToCalendarString(news.date),
+                        style: TextStyle(color: Colors.black)),
                   ]),
             ),
           ],
@@ -83,5 +82,6 @@ class NewsItem extends StatelessWidget {
     );
   }
 
-  String _dateToCalendarString(DateTime date) => "${date.month}/${date.day}/${date.year}";
+  String _dateToCalendarString(DateTime date) =>
+      "${date.month}/${date.day}/${date.year}";
 }
