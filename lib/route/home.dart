@@ -1,6 +1,7 @@
 import 'package:escape_earth/bottom_home.dart';
 import 'package:escape_earth/route/collection.dart';
 import 'package:escape_earth/route/qa.dart';
+import 'package:escape_earth/view/NewsView.dart';
 import 'package:escape_earth/view/RocketHero.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,9 @@ class HomeState extends State<Home> {
               clickListener: (index) {
                 switch (index) {
                   case 0:
-                    // TODO click
+                    setState(() {
+                      currentFragment = NewsList();
+                    });
                     break;
                   case 1:
                     if (currentFragment is HomeBody) {

@@ -25,7 +25,7 @@ class CollectionRocketRoute extends StatelessWidget {
             }
 
             return ListView.builder(
-              padding: EdgeInsets.only(top: 90.0),
+              padding: EdgeInsets.only(top: 90.0, right: 16.0, left: 16.0),
               itemCount: snap.data.length,
               itemBuilder: (context, i) => RocketView(launch: snap.data[i]),
             );
@@ -34,7 +34,8 @@ class CollectionRocketRoute extends StatelessWidget {
         Align(
           alignment: Alignment.topCenter,
           child: RoundSearch(onSearch: (query) {
-            Navigator.of(context).push(MaterialPageRoute(builder: (_) => LaunchesResultRoute(query: query)));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => LaunchesResultRoute(query: query)));
           }),
         ),
       ],
