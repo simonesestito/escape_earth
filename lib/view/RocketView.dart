@@ -40,18 +40,43 @@ class RocketView extends StatelessWidget {
               Row(children: <Widget>[
                 Icon(Icons.flag, color: Colors.black, size: launchIconHeight),
                 Text(launch.launchCompany.countryCode,
-              
-                    style: TextStyle(color: Colors.black, fontSize: launchTextSize)),
+                    style: TextStyle(
+                        color: Colors.black, fontSize: launchTextSize)),
               ]),
               Row(children: <Widget>[
-                Image.asset("assets/img/ic_rocket_launch.png", width: launchIconHeight),
-                Text(launch.launchCompany.name,
-                    style: TextStyle(color: Colors.black, fontSize: launchTextSize)),
+                Image.asset("assets/img/ic_rocket_launch.png",
+                    width: launchIconHeight),
+                Flexible(
+                  child: Text(
+                    launch.launchCompany.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: Colors.black, fontSize: launchTextSize),
+                  ),
+                ),
               ]),
               Row(children: <Widget>[
-                Icon(Icons.alarm, color: Colors.black, size: launchIconHeight,),
-                Text(launch.date, style: TextStyle(color: Colors.black, fontSize: launchTextSize)),
+                Icon(
+                  Icons.alarm,
+                  color: Colors.black,
+                  size: launchIconHeight,
+                ),
+                Text(launch.date,
+                    style: TextStyle(
+                        color: Colors.black, fontSize: launchTextSize)),
               ]),
+              launch.videoUrl == null
+                  ? Container()
+                  : GestureDetector(
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.open_in_browser, color: Colors.black),
+                          Text("Show video"),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.end,
+                      ),
+                      onTap: () {/* TODO */},
+                    ),
             ],
           ),
         ),
