@@ -5,12 +5,17 @@ import 'package:escape_earth/model/RocketLaunch.dart';
 import 'package:http/http.dart' as http;
 
 class RocketService {
-  static Future<List<RocketLaunch>> getLaunches() async {
-    final rawLaunchesResponse =
-        await http.get("https://launchlibrary.net/1.4/launch?next=25");
+  static Future<List<RocketLaunch>> getLaunches({ String query }) async {
+    http.Response rawLaunchesResponse;
+    if (query == null || query == "") {
+       rawLaunchesResponse = await http.get("https://launchlibrary.net/1.4/launch?next=25");
+    } else {
+      rawLaunchesResponse = await http.get("https://launchlibrary.net/1.4/launch?next=25&name=$query");
+    }
+
     final List<dynamic> launchesContent =
         json.decode(rawLaunchesResponse.body)["launches"];
-    
+  
     final agRequests = <Future>[];
     for (Map item in launchesContent) {
       agRequests.add(getAgencyById(item["lsp"]));

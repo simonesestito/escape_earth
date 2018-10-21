@@ -1,5 +1,7 @@
 import 'package:escape_earth/bottom_home.dart';
 import 'package:escape_earth/route/collection.dart';
+import 'package:escape_earth/route/qa.dart';
+import 'package:escape_earth/view/RocketHero.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,7 +14,6 @@ class HomeState extends State<Home> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     currentFragment = HomeBody();
   }
@@ -30,21 +31,28 @@ class HomeState extends State<Home> {
             alignment: Alignment.bottomCenter,
             child: BottomHome(
               buttons: <Widget>[
-                Image(
-                    image: AssetImage("assets/img/ic_home_news.png"),
+                Image.asset("assets/img/ic_home_news.png", color: Colors.white),
+                GestureDetector(
+                    child: RocketHero(),
+                    onVerticalDragEnd: (_) => Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (_) => QaRoute()))),
+                Image.asset("assets/img/home_collection.png",
                     color: Colors.white),
-                Image(image: AssetImage("assets/img/home_rocket.png")),
-                Image(
-                    image: AssetImage("assets/img/home_collection.png"),
-                    color: Colors.white), // TODO: change icon
               ],
               clickListener: (index) {
                 switch (index) {
                   case 0:
-                    // TODO
+                    // TODO click
                     break;
                   case 1:
-                    // TODO
+                    if (currentFragment is HomeBody) {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => QaRoute()));
+                    } else {
+                      setState(() {
+                        currentFragment = HomeBody();
+                      });
+                    }
                     break;
                   case 2:
                     setState(() {
@@ -64,7 +72,7 @@ class HomeState extends State<Home> {
 class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    // TODO: implement HomeBody
     return Container();
   }
 }
