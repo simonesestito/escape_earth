@@ -103,7 +103,7 @@ class HomeBody extends StatelessWidget {
                     child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text("NEXT LAUNCH IN:", style: TextStyle(fontSize: 18.0)),
+                Text("NEXT LAUNCH IN:", style: TextStyle(fontSize: 22.0)),
                 Padding(padding: EdgeInsets.all(10.0)),
                 Counter(
                   until: DateTime.parse(snap.data.date),
