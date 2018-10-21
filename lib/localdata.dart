@@ -1,4 +1,5 @@
 import 'package:escape_earth/model/News.dart';
+import 'package:escape_earth/model/Question.dart';
 
 final latestNews = List.unmodifiable(<News>[
   News(
@@ -87,4 +88,66 @@ Chandra is 19 years old, which is well beyond the original design lifetime of 5 
           "Chandra is 19 years old, which is well beyond the original design lifetime of 5 years. In 2001, NASA extended its lifetime to 10 years.",
       imageUrl:
           "https://www.nasa.gov/sites/default/files/styles/2x1_cardfeed/public/thumbnails/image/chandra_4k_v2.jpg")
+]);
+
+final faqQuestions = List.unmodifiable(<Question>[
+  Question(
+      question: "What factors go into a decision to launch?",
+      answer:
+          """The simplicity of the question belies the complexity of the answer. The best time to start a mission is based on a blend of factors: the flight's target and goals, the needs of the spacecraft, the type of rocket, and the desired trajectory, which refers to the path the vehicle and spacecraft must take to successfully start the mission. Not only do these variables influence the preferred launch time -- the ideal time of departure -- but the overall length of the launch window, which can vary from one second to several hours.
+The dynamics change from mission to mission, and determining the launch window is an important part of the overall flight design.
+
+The most significant deciding factors in when to launch are where the spacecraft is 
+headed, and what its solar needs are. Earth-observing spacecraft, for example, may be sent into low Earth orbit. Some payloads must arrive at a specific point at a precise time, perhaps to rendezvous with another object or join a constellation of satellites already in place. Missions to the moon or a planet involve aiming for a moving object a long distance away.
+
+All of these variables influence a flight's trajectory and launch time. A low Earth mission with specific timing needs must lift off at the right time to slip into the same orbit as its target; a planetary mission typically has to launch when the trajectory will take it away from Earth and out on the correct course.
+
+Of course, weather or technical problems can interfere with the team's best plans. Launch windows are intended to absorb small delays while still offering plenty of chances to lift off on a given day. However, launching at a time other than the preferred time could reduce the rocket's performance, potentially limiting the payload mass.
+
+Collision avoidance can get tricky, because even though the trajectory has been carefully planned, real-time factors result in some uncertainty. For example, during the trajectory design process, the team assumes certain propellant temperatures. But if the temperatures are slightly different on launch day, that will affect the propellant, which in turn alters the efficiency of the rocket's engines or solid rocket motors.
+"""),
+  Question(
+    question: "Where are the world’s major spaceports?",
+    answer: """The major spaceport in the world are:
+ 
+Baikonur Cosmodrome is the biggest space port. (russia)
+
+The Bayqoñyr cosmodrome also called Tjuratam, is the oldest and most used launch base in the world. It was built by the Soviet Union, and is now under Russian administration, although geographically it is located in Kazakhstan. 
+
+-Spaceport America  (usa)
+
+Spaceport America is a spaceport located in the Jornada del Muerto desert, in New Mexico.
+Officially declared operational on October 18, 2011, it is the first spaceport built for commercial purposes. The inauguration took place in the presence of the governor of New Mexico and Richard Branson, president of Virgin Galactic: the private company that will manage the zero gravity sub-orbital flights aboard the SpaceShipTwo.
+	
+-Jiuquan Satellite Launch Center (china)
+
+Jiuquan Satellite Launch Center is a Chinese space vehicle launch facility (spaceport) located in the Gobi desert, Inner Mongolia. It is part of the Dongfeng Aerospace City. 
+It was founded in 1958, the first of China's four spaceports. More Chinese launches have occurred at Jiuquan than anywhere else. As with all Chinese launch facilities it is remote and generally closed to foreigners.
+
+-Wenchang Spacecraft Launch Site (chIna)
+
+Wenchang Spacecraft Launch Site located in Wenchang, Hainan, China. It is one of the two spacecraft launch sites of Xichang Satellite Launch Center It is a former sub-orbital test center. It is China's fourth and southernmost space vehicle launch facility (spaceport). It has been specially selected for its low latitude, which is only 19 degrees north of the equator, which will allow for a substantial increase in payload, necessary for the future manned program, space station and deep space exploration program. Furthermore, it is capable of launching the new heavy-lift Long March 5 booster.
+
+Tanegashima Space Center (japan)
+
+The Tanegashima is the largest rocket-launch complex in Japan with a total area of about 9,700,000 square meters. It is located on the south east coast of Tanegashima, an island approximately 40 km south of Kyushu. It was established in 1969 when the National Space Development Agency of Japan  was formed, and is now run by JAXA. It is claimed to be one of the most beautiful rocket-launch complexes in the world due to the natural scenery and view of the Pacific Ocean.The activities that take place at TNSC include assembly, testing, launching, and tracking satellites, as well as rocket engine firing tests.""",
+  ),
+  Question(
+      question: "Where are good surrounding sites to view each rocket launch?",
+      answer:
+          """The best places to see a space launches are in Florida and they are:
+- Kennedy Space Center at Cape Canaveral;
+ - Shores of the Indian River;
+- U.S. Space Walk of Fame;
+- Playalinda Beach;
+- U.S. Astronauts Hall of Fame;
+- Port Canaveral;
+- Cocoa Beach Pier;
+- The Space Coast;
+"""),
+  Question(
+      question:
+          "What other great pieces of information can I get from this app?",
+      answer:
+          """All the information about the space launch that it’s utility for u are in the launch section, where you can see a actual situation about all the launch that are expected for the future."""),
 ]);
