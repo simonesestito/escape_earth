@@ -19,7 +19,7 @@ class QaRoute extends StatelessWidget {
             final question = faqQuestions[i - 1];
             return ExpansionTile(
               title: Padding(
-                child: Text(question.question),
+                child: Text(question.question, style: TextStyle(fontWeight: FontWeight.bold)),
                 padding: EdgeInsets.symmetric(vertical: 30.0),
               ),
               children: <Widget>[
