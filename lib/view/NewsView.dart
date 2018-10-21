@@ -65,6 +65,16 @@ class NewsItem extends StatelessWidget {
               padding: EdgeInsets.all(11.0),
               child: Text(news.preview, style: TextStyle(color: Colors.black)),
             ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 8.0, right: 8.0),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Icon(Icons.calendar_today, color: Colors.black),
+                    Padding(padding: EdgeInsets.all(2.5)),
+                    Text(_dateToCalendarString(news.date), style: TextStyle(color: Colors.black)),
+                  ]),
+            ),
           ],
         ),
       ),
@@ -72,4 +82,6 @@ class NewsItem extends StatelessWidget {
           .push(MaterialPageRoute(builder: (_) => SingleNewsRoute(news: news))),
     );
   }
+
+  String _dateToCalendarString(DateTime date) => "${date.month}/${date.day}/${date.year}";
 }
