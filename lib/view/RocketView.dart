@@ -19,6 +19,7 @@
 
 import 'package:escape_earth/model/RocketLaunch.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class RocketView extends StatelessWidget {
   final RocketLaunch launch;
@@ -94,7 +95,7 @@ class RocketView extends StatelessWidget {
                         ],
                         mainAxisAlignment: MainAxisAlignment.end,
                       ),
-                      onTap: () {/* TODO */},
+                      onTap: () => UrlLauncher.launch(launch.videoUrl),
                     ),
             ],
           ),
