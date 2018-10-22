@@ -18,6 +18,7 @@
  */
 
 import 'package:escape_earth/service/RocketService.dart';
+import 'package:escape_earth/view/OfflineView.dart';
 import 'package:escape_earth/view/RocketView.dart';
 import 'package:flutter/material.dart';
 
@@ -39,9 +40,20 @@ class LaunchesResultRoute extends StatelessWidget {
               future: RocketService.getLaunches(query: query),
               initialData: null,
               builder: (context, snap) {
-                if (snap.data == null || snap.data.length == 0) {
+                if (snap.error != null) {
+                  debugPrint(snap.error.toString());
+                  return OfflineView();
+                }
+
+                if (snap.data == null) {
                   return Center(
                     child: CircularProgressIndicator(),
+                  );
+                }
+
+                if (snap.data.length == 0) {
+                  return Center(
+                    child: Text("No results :("),
                   );
                 }
 

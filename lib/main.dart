@@ -93,14 +93,13 @@ class SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     final Animation curve =
         CurvedAnimation(parent: controller, curve: Curves.elasticIn);
     rocketAnimation = IntTween(begin: 0, end: 360).animate(curve);
-    controller.forward();
-    controller.addStatusListener((status) async {
+    controller..addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         // Wait after the animation
         await Future.delayed(Duration(milliseconds: 600));
         widget.callback();
       }
-    });
+    })..forward();
   }
 
   @override

@@ -22,6 +22,7 @@ import 'package:escape_earth/route/collection.dart';
 import 'package:escape_earth/route/qa.dart';
 import 'package:escape_earth/service/RocketService.dart';
 import 'package:escape_earth/view/NewsView.dart';
+import 'package:escape_earth/view/OfflineView.dart';
 import 'package:escape_earth/view/RocketHero.dart';
 import 'package:escape_earth/view/RocketView.dart';
 import 'package:flutter/material.dart';
@@ -99,15 +100,15 @@ class HomeBody extends StatelessWidget {
     return FutureBuilder(
       future: RocketService.getNextLaunch(),
       builder: (context, snap) {
+        if (snap.error != null) {
+          debugPrint(snap.error.toString());
+          return OfflineView();
+        }
+
         if (snap.data == null) {
           return Center(
             child: CircularProgressIndicator(),
           );
-        }
-
-        if (snap.error != null) {
-          print(snap.error);
-          return Center(child: Icon(Icons.portable_wifi_off));
         }
 
         return Column(

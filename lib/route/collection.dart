@@ -19,6 +19,7 @@
 
 import 'package:escape_earth/route/launches_result.dart';
 import 'package:escape_earth/service/RocketService.dart';
+import 'package:escape_earth/view/OfflineView.dart';
 import 'package:escape_earth/view/RocketView.dart';
 import 'package:escape_earth/view/RoundSearch.dart';
 import 'package:flutter/material.dart';
@@ -32,15 +33,15 @@ class CollectionRocketRoute extends StatelessWidget {
           future: RocketService.getLaunches(),
           initialData: null,
           builder: (context, snap) {
+            if (snap.error != null) {
+              debugPrint(snap.error.toString());
+              return OfflineView();
+            }
+
             if (snap.data == null || snap.data.length == 0) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            }
-
-            if (snap.error != null) {
-              print(snap.error);
-              return Center(child: Icon(Icons.portable_wifi_off));
             }
 
             return ListView.builder(
