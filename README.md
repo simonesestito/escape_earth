@@ -34,8 +34,11 @@ And a lot of tenacy!
 
 ## Things you can download
 
-You can download the exact things presented at the end of the challenge at:
+Code and APK (in Assets) exactly as presented:
 https://github.com/simonesestito/escape_earth/tree/1.0
+
+Latest version (download the APK from the Assets):
+https://github.com/simonesestito/escape_earth/releases/latest
 
 YouTube trailer video: https://youtu.be/mWQ_BMv8Kjs
 
