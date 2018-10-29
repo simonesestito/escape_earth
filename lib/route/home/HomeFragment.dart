@@ -111,6 +111,12 @@ class CounterState extends State<Counter> {
     final now = DateTime.now().millisecondsSinceEpoch;
     final diff = widget.until.millisecondsSinceEpoch - now;
 
+    if (diff < 0) {
+      // Stop countdown
+      isRunning = false;
+      return "Launched!";
+    }
+
     final days = diff ~/ 86400000;
     final hours = diff ~/ 3600000 % 24;
     final minutes = diff ~/ 60000 % 60;
@@ -124,10 +130,14 @@ class CounterState extends State<Counter> {
     ];
 
     int parts;
-    if (days > 0) parts = 0;
-    else if (hours > 0) parts = 1;
-    else if (minutes > 0) parts = 2;
-    else parts = 3;
+    if (days > 0)
+      parts = 0;
+    else if (hours > 0)
+      parts = 1;
+    else if (minutes > 0)
+      parts = 2;
+    else
+      parts = 3;
 
     return countdownParts.sublist(parts).join(" ");
   }
