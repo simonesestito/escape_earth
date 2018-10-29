@@ -45,7 +45,12 @@ class HomeRouteState extends State<HomeRoute> {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(bottom: BOTTOM_BAR_HEIGHT),
-            child: SafeArea(child: currentFragment),
+            child: SafeArea(
+              child: WillPopScope(
+                child: currentFragment,
+                onWillPop: _willPopCallback,
+              ),
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -53,11 +58,14 @@ class HomeRouteState extends State<HomeRoute> {
               buttons: <Widget>[
                 Image.asset("assets/img/ic_home_news.png", color: Colors.white),
                 GestureDetector(
-                    child: RocketHero(),
-                    onVerticalDragEnd: (_) =>
-                        Navigator.of(context).pushNamed("/faq")),
-                Image.asset("assets/img/home_collection.png",
-                    color: Colors.white),
+                  child: RocketHero(),
+                  onVerticalDragEnd: (_) =>
+                      Navigator.of(context).pushNamed("/faq"),
+                ),
+                Image.asset(
+                  "assets/img/home_collection.png",
+                  color: Colors.white,
+                ),
               ],
               clickListener: (index) {
                 switch (index) {
@@ -87,5 +95,18 @@ class HomeRouteState extends State<HomeRoute> {
         ],
       ),
     );
+  }
+
+  Future<bool> _willPopCallback() async {
+    if (currentFragment is HomeFragment) {
+      // Call .pop() as usual
+      return true;
+    } else {
+      // Go back to home fragment
+      setState(() {
+        currentFragment = HomeFragment();
+      });
+      return false;
+    }
   }
 }
