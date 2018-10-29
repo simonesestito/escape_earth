@@ -41,7 +41,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.escapeearth"
+        applicationId "com.exos.escapeearth"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
