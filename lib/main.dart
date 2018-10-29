@@ -41,6 +41,7 @@ class App extends StatelessWidget {
 
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
+        accentColor: Colors.lightBlueAccent,
         backgroundColor: Color.fromARGB(0xFF, 0x13, 0x1C, 0x31),
         scaffoldBackgroundColor: Color.fromARGB(0xFF, 0x09, 0x10, 0x2a),
         primaryColor: Color.fromARGB(0xFF, 0x13, 0x1C, 0x31),
