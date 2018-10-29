@@ -1,4 +1,4 @@
-package com.example.escapeearth
+package com.exos.escapeearth
 
 import android.os.Bundle
 
