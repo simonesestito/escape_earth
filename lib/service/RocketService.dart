@@ -86,21 +86,18 @@ class RocketService {
         .asMap()
         .map((_, agency) => MapEntry(agency.id, agency));
 
-    final result = <RocketLaunch>[];
-    for (int i = 0; i < launchesContent.length; i++) {
-      final currentLaunch = launchesContent[i];
+    return launchesContent.map((currentLaunch) {
       final requestedAgencyId = currentLaunch["lsp"];
       final Agency resolvedAgency = resolvedAgenciesMap[requestedAgencyId];
-  
-      result.add(RocketLaunch(
+
+      return RocketLaunch(
         country: resolvedAgency.countryCode,
         launchCompany: resolvedAgency,
         name: currentLaunch["name"],
         date: currentLaunch["windowstart"],
         videoUrl: (currentLaunch["vidURLs"] ?? [null])[0],
-      ));
-    }
-    return result;
+      );
+    });
   }
 
   static Future<Agency> getAgencyById(String id) async {
