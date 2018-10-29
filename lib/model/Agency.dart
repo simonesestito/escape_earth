@@ -21,10 +21,12 @@ import 'package:meta/meta.dart';
 
 @immutable
 class Agency {
+  final String id;
   final String countryCode;
   final String name;
 
   Agency({
+    this.id,
     this.countryCode,
     this.name,
   });

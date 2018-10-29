@@ -60,20 +60,44 @@ class RocketService {
     final List<dynamic> launchesContent =
         json.decode(rawLaunchesResponse.body)["launches"];
 
-    final agRequests = <Future>[];
+    // Get details about every single agency
+    // Use the following technique to avoid duplicate requests
+
+    // (1) Keep a Map with:
+    // - key: the ID of the agency
+    // - value: the Future for the request to get details about that agency
+    final agencyRequests = Map<String, Future<Agency>>();
+
     for (Map item in launchesContent) {
-      agRequests.add(getAgencyById(item["lsp"]));
+      final agencyId = item["lsp"];
+      // (2) Check if there is already a pending request for this agency
+      if (agencyRequests.containsKey(agencyId)) {
+        // No need to perform another request
+      } else {
+        // Perform the request for this agency FOR THE FIRST TIME
+        // and add it to the Map of pending requests
+        agencyRequests[agencyId] = getAgencyById(agencyId);
+      }
     }
-    final allAgencies = await Future.wait(agRequests);
+
+    // Await for all those requests
+    // Remember: with this technique there will only be ONE SINGLE request for each agency
+    final resolvedAgenciesMap = (await Future.wait(agencyRequests.values))
+        .asMap()
+        .map((_, agency) => MapEntry(agency.id, agency));
 
     final result = <RocketLaunch>[];
     for (int i = 0; i < launchesContent.length; i++) {
+      final currentLaunch = launchesContent[i];
+      final requestedAgencyId = currentLaunch["lsp"];
+      final Agency resolvedAgency = resolvedAgenciesMap[requestedAgencyId];
+  
       result.add(RocketLaunch(
-        country: allAgencies[i].countryCode,
-        launchCompany: allAgencies[i],
-        name: launchesContent[i]["name"],
-        date: launchesContent[i]["windowstart"],
-        videoUrl: (launchesContent[i]["vidURLs"] ?? [null])[0],
+        country: resolvedAgency.countryCode,
+        launchCompany: resolvedAgency,
+        name: currentLaunch["name"],
+        date: currentLaunch["windowstart"],
+        videoUrl: (currentLaunch["vidURLs"] ?? [null])[0],
       ));
     }
     return result;
@@ -87,6 +111,7 @@ class RocketService {
     final raw = await http.get("https://launchlibrary.net/1.4/agency/$id");
     final agency = json.decode(raw.body)["agencies"][0];
     return Agency(
+      id: agency["id"].toString(),
       name: agency["name"],
       countryCode: agency["countryCode"],
     );
