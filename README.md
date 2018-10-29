@@ -37,11 +37,13 @@ And a lot of tenacy!
 ## Things you can download
 
 You can download the exact things presented at the end of the challenge at:
-https://github.com/simonesestito/escape_earth/tree/1.0
+https://github.com/simonesestito/escape_earth/releases/tag/1.0
 
 YouTube trailer video: https://youtu.be/mWQ_BMv8Kjs
 
 PowerPoint presentation: https://drive.google.com/uc?id=1RUj_obKkk_qJa7SKBvSx8Ys6CzYDSxFn&export=download
+
+Current version of the app with latest features: https://play.google.com/store/apps/details?id=com.exos.escapeearth
 
 ## License
 
