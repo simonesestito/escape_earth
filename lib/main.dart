@@ -17,25 +17,21 @@
  * along with Escape Earth.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import 'package:escape_earth/route/home.dart';
+import 'package:escape_earth/route/AboutRoute.dart';
+import 'package:escape_earth/route/FaqRoute.dart';
+import 'package:escape_earth/route/HomeRoute.dart';
+import 'package:escape_earth/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+const _splashDuration = Duration(milliseconds: 1500);
+const _splashWait = Duration(milliseconds: 300);
+
 void main() => runApp(App());
 
-final _splashDuration = Duration(milliseconds: 1400);
-
-class App extends StatefulWidget {
+class App extends StatelessWidget {
   @override
-  AppState createState() => AppState();
-}
-
-class AppState extends State<App> {
-  Widget currentView;
-
-  @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.light.copyWith(
         statusBarColor: Color.fromARGB(0xFF, 0x09, 0x10, 0x2a),
@@ -43,89 +39,30 @@ class AppState extends State<App> {
       ),
     );
 
-    currentView = Splash(
-      duration: _splashDuration,
-      callback: () {
-        setState(() {
-          currentView = Home();
-        });
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
         backgroundColor: Color.fromARGB(0xFF, 0x13, 0x1C, 0x31),
         scaffoldBackgroundColor: Color.fromARGB(0xFF, 0x09, 0x10, 0x2a),
+        primaryColor: Color.fromARGB(0xFF, 0x13, 0x1C, 0x31),
       ),
       title: "Escape Earth",
-      home: currentView,
+      home: _AppBody(),
+      routes: <String, WidgetBuilder>{
+        "/faq": (_) => FaqRoute(),
+        "/home": (_) => HomeRoute(),
+        "/about": (_) => AboutRoute(),
+      },
     );
   }
 }
 
-typedef void SplashCallback();
-
-class Splash extends StatefulWidget {
-  final Duration duration;
-  final SplashCallback callback;
-
-  Splash({
-    Key key,
-    @required this.duration,
-    @required this.callback,
-  }) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => SplashState();
-}
-
-class SplashState extends State<Splash> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<int> rocketAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = AnimationController(vsync: this, duration: widget.duration);
-    final Animation curve =
-        CurvedAnimation(parent: controller, curve: Curves.elasticIn);
-    rocketAnimation = IntTween(begin: 0, end: 360).animate(curve);
-    controller..addStatusListener((status) async {
-      if (status == AnimationStatus.completed) {
-        // Wait after the animation
-        await Future.delayed(Duration(milliseconds: 600));
-        widget.callback();
-      }
-    })..forward();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
+class _AppBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: Center(
-          child: Container(
-        width: 250.0,
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            Image(image: AssetImage("assets/img/splash_fixed.png")),
-            RotationTransition(
-              turns: controller,
-              child: Image(image: AssetImage("assets/img/splash_rotating.png")),
-            ),
-          ],
-        ),
-      )),
+    return Splash(
+      duration: _splashDuration,
+      waitDuration: _splashWait,
+      callback: () => Navigator.of(context).pushReplacementNamed("/home"),
     );
   }
 }

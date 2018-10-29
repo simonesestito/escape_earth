@@ -19,7 +19,7 @@
 
 import 'package:escape_earth/service/RocketService.dart';
 import 'package:escape_earth/view/OfflineView.dart';
-import 'package:escape_earth/view/RocketView.dart';
+import 'package:escape_earth/view/RocketWidget.dart';
 import 'package:flutter/material.dart';
 
 class LaunchesResultRoute extends StatelessWidget {
@@ -60,7 +60,7 @@ class LaunchesResultRoute extends StatelessWidget {
                 return ListView.builder(
                   padding: EdgeInsets.only(top: 48.0),
                   itemCount: snap.data.length,
-                  itemBuilder: (context, i) => RocketView(launch: snap.data[i]),
+                  itemBuilder: (context, i) => RocketWidget(launch: snap.data[i]),
                 );
               },
             ),

@@ -32,8 +32,7 @@ class SingleNewsRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(news.title),
-        backgroundColor: Theme.of(context).backgroundColor,
+        title: Text(news.title)
       ),
       body: ListView(
         children: <Widget>[

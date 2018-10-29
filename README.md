@@ -15,7 +15,7 @@ More info about the challenge: https://2018.spaceappschallenge.org/challenges/ca
 
 ## What the app does
 
-The app has 3 main sections:
+The app has many different sections:
 - FAQ about launches (scroll the rocket up)
 - News from official NASA site
 - Next launches

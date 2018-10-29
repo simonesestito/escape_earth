@@ -21,10 +21,10 @@ import 'package:escape_earth/model/RocketLaunch.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
-class RocketView extends StatelessWidget {
+class RocketWidget extends StatelessWidget {
   final RocketLaunch launch;
 
-  RocketView({
+  RocketWidget({
     Key key,
     @required this.launch,
   }) : super(key: key);

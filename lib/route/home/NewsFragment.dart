@@ -22,7 +22,7 @@ import 'package:escape_earth/route/SingleNewsRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:escape_earth/localdata.dart';
 
-class NewsList extends StatelessWidget {
+class NewsFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

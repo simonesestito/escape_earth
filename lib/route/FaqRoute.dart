@@ -21,7 +21,7 @@ import 'package:escape_earth/localdata.dart';
 import 'package:escape_earth/view/RocketHero.dart';
 import 'package:flutter/material.dart';
 
-class QaRoute extends StatelessWidget {
+class FaqRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

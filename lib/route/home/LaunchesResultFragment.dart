@@ -17,14 +17,14 @@
  * along with Escape Earth.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import 'package:escape_earth/route/launches_result.dart';
+import 'package:escape_earth/route/LaunchesResultRoute.dart';
 import 'package:escape_earth/service/RocketService.dart';
 import 'package:escape_earth/view/OfflineView.dart';
-import 'package:escape_earth/view/RocketView.dart';
+import 'package:escape_earth/view/RocketWidget.dart';
 import 'package:escape_earth/view/RoundSearch.dart';
 import 'package:flutter/material.dart';
 
-class CollectionRocketRoute extends StatelessWidget {
+class CollectionRocketFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -47,7 +47,7 @@ class CollectionRocketRoute extends StatelessWidget {
             return ListView.builder(
               padding: EdgeInsets.only(top: 90.0, right: 16.0, left: 16.0),
               itemCount: snap.data.length,
-              itemBuilder: (context, i) => RocketView(launch: snap.data[i]),
+              itemBuilder: (context, i) => RocketWidget(launch: snap.data[i]),
             );
           },
         ),
