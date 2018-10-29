@@ -95,7 +95,7 @@ class CounterState extends State<Counter> {
   void _run() async {
     while (isRunning) {
       await Future.delayed(const Duration(seconds: 1));
-      setState(() {});
+      if (isRunning) setState(() {});
     }
   }
 
