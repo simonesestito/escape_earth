@@ -97,7 +97,7 @@ class RocketService {
         date: currentLaunch["windowstart"],
         videoUrl: (currentLaunch["vidURLs"] ?? [null])[0],
       );
-    });
+    }).toList();
   }
 
   static Future<Agency> getAgencyById(String id) async {
