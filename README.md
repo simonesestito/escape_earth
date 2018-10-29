@@ -2,6 +2,8 @@
 
 NASA Space Apps Challenge 2018 product.
 
+<a href='https://play.google.com/store/apps/details?id=com.exos.escapeearth'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="80"/></a>
+
 ## The challenge
 
 **Do YOU Know When the Next Rocket Launch Is?**
@@ -57,3 +59,5 @@ PowerPoint presentation: https://drive.google.com/uc?id=1RUj_obKkk_qJa7SKBvSx8Ys
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    
+_Google Play and the Google Play logo are trademarks of Google LLC._
