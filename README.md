@@ -2,7 +2,7 @@
 
 NASA Space Apps Challenge 2018 product.
 
-<a href='https://play.google.com/store/apps/details?id=com.exos.escapeearth'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="80"/></a>
+[![Download latest APK](https://github.com/simonesestito/escape_earth/blob/master/.github/badge.png?raw=true)](https://github.com/simonesestito/escape_earth/raw/master/app-release.apk)
 
 ## The challenge
 
